@@ -282,4 +282,17 @@ impl AsyncLen {
     }
 }
 
+// issue #9520
+pub struct NonStandardLenAndIsEmptySignature;
+impl NonStandardLenAndIsEmptySignature {
+    // don't lint
+    pub fn len(&self, something: usize) -> usize {
+        something
+    }
+
+    pub fn is_empty(&self, something: usize) -> bool {
+        something == 0
+    }
+}
+
 fn main() {}
